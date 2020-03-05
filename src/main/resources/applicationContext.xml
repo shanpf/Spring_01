@@ -1,1 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	dtd : document type definition 文档类型定义 使用.dtd文件约束
+	xsd : xml schema definition xml规范定义 使用.xsd文件约束
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 作用：声明需要Spring生产的组件 -->
+	<!-- UserDAOImpl组件 id="组织标识" class="组件类型" -->
+	<bean id="userDAO"></bean>
+	<!-- UserServiceImpl组件 -->
+	<bean id="userService"></bean>
+</beans>
