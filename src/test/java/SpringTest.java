@@ -2,20 +2,18 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.shanpf.service.UserService;
-import com.shanpf.vo.User;
+import com.shanpf.di.AUTOComponent;
 
 public class SpringTest {
-	private ApplicationContext context ;
+	private ApplicationContext context;
 
 	@Test
 	public void test() {
 		// 启动工厂
-		context = new ClassPathXmlApplicationContext(
-				"applicationContext.xml");
+		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		// 从工厂获取组件
-		UserService userService = context.getBean("userService",UserService.class);
-		userService.insertUser(new User());
+		AUTOComponent aUTOComponent = context.getBean("aUTOComponent", AUTOComponent.class);
+		System.out.println(aUTOComponent.toString());
 	}
 
 }

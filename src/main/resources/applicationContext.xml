@@ -13,9 +13,59 @@
 	<bean id="userDAO" class="com.shanpf.dao.UserDAOImpl"></bean>
 	<!-- UserServiceImpl组件 -->
 	<bean id="userService" class="com.shanpf.service.UserServiceImpl">
-		<!-- 给属性userDAO赋值
-		将上面工厂可以加载的userDAO赋值进去
-		 -->
+		<!-- 给属性userDAO赋值 将上面工厂可以加载的userDAO赋值进去 -->
 		<property name="userDAO" ref="userDAO"></property>
+	</bean>
+	<!-- set注入测试 -->
+	<bean id="setComponent" class="com.shanpf.di.SetComponent">
+		<!-- 简单类型 基本类型+String -->
+		<property name="id" value="4"></property>
+		<property name="name" value="duquan"></property>
+		<property name="gender" value="true"></property>
+		<property name="userDAO" ref="userDAO"></property>
+		<property name="list04">
+			<list>
+				<value>gp04</value>
+				<ref bean="userDAO" />
+			</list>
+		</property>
+		<property name="set04">
+			<set>
+				<value>duquan</value>
+				<value>duquan</value>
+				<value>duquan</value>
+				<value>wangzhec</value>
+			</set>
+		</property>
+		<property name="map04">
+			<map>
+				<entry key="username" value="shanpf"></entry>
+				<entry key="comp" value="yonyou"></entry>
+			</map>
+		</property>
+		<property name="props04">
+			<props>
+				<prop key="url">www.baidu.com</prop>
+				<prop key="dp">www.yonyou.com</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 构造注入测试 -->
+	<bean id="consComponent" class="com.shanpf.di.ConsComponent">
+		<!-- 代表构造器第一个参数的类型为布尔，赋值为true -->
+		<constructor-arg index="0" type="java.lang.Boolean"
+			value="true"></constructor-arg>
+		<constructor-arg index="1" type="java.lang.Integer"
+			value="4"></constructor-arg>
+		<constructor-arg index="2" type="java.lang.String"
+			value="shanpf"></constructor-arg>
+	</bean>
+	<!-- spring自动注入测试 
+	 autowire=自动装载
+	 byType=按类型自动注入 当前工厂中有且只能有以重此类型的bean，否则报错
+	 byName=将工厂中属性名称一样的组件赋值给对应属性 
+	  -->
+	<bean id="aUTOComponent" class="com.shanpf.di.AUTOComponent"
+		autowire="byName">
 	</bean>
 </beans>
