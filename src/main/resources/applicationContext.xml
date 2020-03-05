@@ -3,6 +3,7 @@
 <!-- 
 	dtd : document type definition 文档类型定义 使用.dtd文件约束
 	xsd : xml schema definition xml规范定义 使用.xsd文件约束
+	文档约束：标签、顺序、层级、属性
  -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -11,7 +12,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<!-- 作用：声明需要Spring生产的组件 -->
 	<!-- UserDAOImpl组件 id="组织标识" class="组件类型" -->
-	<bean id="userDAO"></bean>
+	<!-- 当Spring启动时，读取改配置文件，创建对应类的对象，并用id作为标识 -->
+	<bean id="userDAO" class="com.shanpf.dao.UserDAOImpl"></bean>
 	<!-- UserServiceImpl组件 -->
-	<bean id="userService"></bean>
+	<bean id="userService" class="com.shanpf.service.UserServiceImpl"></bean>
 </beans>
