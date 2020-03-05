@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
-	dtd : document type definition 文档类型定义 使用.dtd文件约束
-	xsd : xml schema definition xml规范定义 使用.xsd文件约束
-	文档约束：标签、顺序、层级、属性
- -->
+<!-- dtd : document type definition 文档类型定义 使用.dtd文件约束 xsd : xml schema definition 
+	xml规范定义 使用.xsd文件约束 文档约束：标签、顺序、层级、属性 -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -15,5 +12,10 @@
 	<!-- 当Spring启动时，读取改配置文件，创建对应类的对象，并用id作为标识 -->
 	<bean id="userDAO" class="com.shanpf.dao.UserDAOImpl"></bean>
 	<!-- UserServiceImpl组件 -->
-	<bean id="userService" class="com.shanpf.service.UserServiceImpl"></bean>
+	<bean id="userService" class="com.shanpf.service.UserServiceImpl">
+		<!-- 给属性userDAO赋值
+		将上面工厂可以加载的userDAO赋值进去
+		 -->
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
 </beans>
